@@ -1,0 +1,63 @@
+#task-dashboard-title {
+  font-size: 2rem;
+  color: #3d52a0;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#no-task-mesagge {
+  font-size: 1.2rem;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 20px;
+  color: var(--darkcolor);
+  text-align: center;
+}
+.task-list-page {
+  padding: 40px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 📌 Dashboard Heading */
+.task-list-page h2 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--darkgreen);
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+/* 📌 Container for All Tasks */
+.task-list-container {
+  width: 90%;
+  max-width: 1000px;
+  background-color: #7091e6;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 0 auto;
+}
+
+/* 📌 Task Card Header */
+.task-card-container.header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+  padding: 15px;
+  background-color: #3d52a0;
+  color: #ede8f5;
+  font-weight: bold;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+  text-align: center;
+}
+
+/* .task-card.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+} */

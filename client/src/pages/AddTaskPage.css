@@ -1,0 +1,61 @@
+.add-task-page {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-task-title {
+  display: flex;
+  justify-content: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #ede8f5;
+}
+
+.add-task-form-container form {
+  margin: 100px auto;
+  padding: 40px;
+  max-width: 600px;
+  background-color: #7091e6;
+  border-radius: 40px;
+}
+
+.form-content {
+  display: flex;
+  gap: 20px;
+}
+
+.column-left .column-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.add-task-form-container form input[type="text"],
+.add-task-form-container form input[type="date"],
+.add-task-form-container form textarea,
+.add-task-form-container form select,
+#categories {
+  width: 100%;
+  border-radius: 20px;
+  background-color: white;
+  color: grey;
+  border: 1px solid #ede8f5;
+  padding: 10px;
+  margin: 10px;
+  font-size: 1rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.button-group button {
+  flex: 1;
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+  .form-content {
+    flex-direction: column; /* Stack columns on smaller screens */
+  }
+}

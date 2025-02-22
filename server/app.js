@@ -6,6 +6,7 @@ const cors = require("cors");
 
 const usersRoutes = require("./routes/usersRoutes");
 const tasksRoutes = require("./routes/tasksRoutes");
+const categoriesRoutes = require("./routes/categoriesRoutes");
 
 var app = express();
 app.use(logger("dev"));
@@ -17,5 +18,6 @@ app.use(cors());
 
 app.use("/api/users", usersRoutes);
 app.use("/api/tasks", tasksRoutes);
+app.use("/api/categories", categoriesRoutes);
 
 module.exports = app;
