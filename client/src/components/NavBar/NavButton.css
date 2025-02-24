@@ -1,0 +1,25 @@
+button.nav-button {
+  background-color: #ede8f5;
+  color: #3d52a0;
+  margin: 5px;
+}
+
+button.nav-button:hover {
+  background-color: #adbbda;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+button.nav-button,
+button.nav-button:hover {
+  border: none;
+  border-radius: 40px;
+  font-size: 15px;
+
+  width: 100px;
+  height: 40px;
+}
+
+.nav-button.active {
+  background-color: #7091e6;
+  color: white;
+}

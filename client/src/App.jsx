@@ -1,4 +1,5 @@
 import { RegisterPage } from "./pages/RegisterPage";
+import { NavBar } from "./components/NavBar/NavBar";
 import { LoginPage } from "./pages/LogInPage";
 import { AddTasksPage } from "./pages/AddTasksPage";
 import { TaskDashboard } from "./pages/taskDashboard";
@@ -18,10 +19,8 @@ function App() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (token) {
-      setIsLoggedIn(true);
-    }
-  }, []);
+    setIsLoggedIn(!!token);
+  }, [localStorage.getItem("token")]);
 
   const handleLogin = () => {
     setIsLoggedIn(true);
@@ -34,9 +33,22 @@ function App() {
 
   return (
     <Router>
+      {isLoggedIn && <NavBar isLoggedIn={isLoggedIn} onLogout={handleLogout} />}
       <Routes>
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
+        <Route
+          path="/register"
+          element={!isLoggedIn ? <RegisterPage /> : <Navigate to="/tasks" />}
+        />
+        <Route
+          path="/login"
+          element={
+            !isLoggedIn ? (
+              <LoginPage onLogin={handleLogin} />
+            ) : (
+              <Navigate to="/tasks" />
+            )
+          }
+        />
         <Route
           path="/add-tasks"
           element={isLoggedIn ? <AddTasksPage /> : <Navigate to="/login" />}
@@ -47,9 +59,12 @@ function App() {
         />
         <Route
           path="/profile"
-          element={isLoggedIn ? <Profile /> : <Navigate to="login" />}
+          element={isLoggedIn ? <Profile /> : <Navigate to="/login" />}
         />
-        <Route path="*" element={<Navigate to="/login" />} />
+        <Route
+          path="*"
+          element={<Navigate to={isLoggedIn ? "/tasks" : "/login"} />}
+        />
       </Routes>
     </Router>
   );
