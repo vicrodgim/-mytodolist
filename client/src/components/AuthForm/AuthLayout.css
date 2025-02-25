@@ -4,10 +4,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url("/auth-background.jpg");
   background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
   display: flex;
   justify-content: center;
   align-items: flex-start;

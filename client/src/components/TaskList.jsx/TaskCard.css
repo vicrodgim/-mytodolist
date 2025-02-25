@@ -1,7 +1,6 @@
-/* 📌 Main Task Card Container */
 .task-card-container {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   padding: 15px;
   background-color: #ede8f5;
   border-radius: 10px;
@@ -10,15 +9,20 @@
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
+  position: relative;
 }
 
-/* 📌 Hover Effect */
+/*Selects only the direct child elements of .task-card-container*/
+
+.task-card-container > div:not(:last-child) {
+  border-right: 1px dotted violet;
+}
+
 .task-card-container:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* 📌 Task Details */
 .task-card {
   display: flex;
   align-items: center;
@@ -28,22 +32,17 @@
   padding: 5px;
 }
 
-/* 📌 Vertical Separator Lines */
 .vl {
   border-right: 1px solid violet;
-  margin: 0 10px;
+  margin: 0 20px;
   height: 70%;
 }
 
-/* 📌 Task Priority Highlighting */
 .task-card.task-priority {
   font-weight: bold;
   text-transform: capitalize;
 }
 
-/* 📌 Completed Status Icon */
-
-/* 📌 Task Actions Section */
 .task-card.actions {
   display: flex;
   flex-direction: column;
@@ -52,7 +51,6 @@
   align-items: center;
 }
 
-/* 📌 Action Buttons */
 .task-card.actions button {
   background-color: #3d53a0;
   border: none;
@@ -68,7 +66,6 @@
   background-color: #7091e6;
 }
 
-/* 📌 Responsive Design */
 @media (max-width: 768px) {
   .task-card-container.header,
   .task-card-container,
@@ -84,4 +81,32 @@
     width: 100%;
     margin-bottom: 5px;
   }
+}
+
+.custom-tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  width: 200px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Position above the element */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.custom-tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
 }

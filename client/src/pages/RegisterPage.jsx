@@ -92,9 +92,9 @@ export const RegisterPage = () => {
         <Button type="submit" disabled={loading}>
           {loading ? "Signing up..." : "Sign up"}
         </Button>
-        <div className="text-center mt-3">
-          <span>Already have an account?</span>
-          <Link to="/login" className="no-underline ms-2">
+        <div className="signup-footer">
+          <span className="question">Already have an account?</span>
+          <Link to="/login" className="link-sl">
             Login
           </Link>
         </div>

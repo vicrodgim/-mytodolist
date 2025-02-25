@@ -8,8 +8,9 @@
 .add-task-title {
   display: flex;
   justify-content: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: #ede8f5;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: white;
 }
 
 .add-task-form-container form {
@@ -45,12 +46,11 @@
   padding: 10px;
   margin: 10px;
   font-size: 1rem;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .button-group button {
   flex: 1;
-  margin-left: 10px;
+  margin-left: 5px;
   margin-top: 5px;
 }
 

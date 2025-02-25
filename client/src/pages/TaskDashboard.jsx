@@ -5,6 +5,7 @@ import "./TaskDashBoard.css";
 
 export const TaskDashboard = () => {
   const [tasks, setTasks] = useState([]);
+  const [categories, setCategories] = useState([]);
   //   const [filters, setFilters] = useState({ completed: null, category: "" });
   const token = localStorage.getItem("token");
 
@@ -23,8 +24,22 @@ export const TaskDashboard = () => {
     }
   };
 
+  const fetchCategories = async () => {
+    try {
+      const response = await axios.get("/api/categories", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setCategories(response.data.categories);
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+    }
+  };
+
   useEffect(() => {
     fetchTasks();
+    fetchCategories();
   }, []);
 
   const handleComplete = async (taskId, completed) => {
@@ -79,6 +94,7 @@ export const TaskDashboard = () => {
               task={task}
               handleComplete={handleComplete}
               handleDelete={handleDelete}
+              categories={categories}
             />
           ))}
         </div>

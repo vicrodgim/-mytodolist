@@ -75,9 +75,9 @@ export const LoginPage = ({ onLogin }) => {
         <Button type="submit" disabled={loading}>
           {loading ? "Logging in..." : "Login"}
         </Button>
-        <div className="text-center mt-3">
-          <span>Don't have an account?</span>
-          <Link to="/register" className="no-underline ms-2">
+        <div className="signup-footer">
+          <span className="question">Don't have an account?</span>
+          <Link to="/register" className="link-sl">
             Sign up
           </Link>
         </div>
