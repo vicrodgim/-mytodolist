@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { TaskCard } from "../components/TaskList.jsx/TaskCard";
+import { SortBar } from "../components/Sorting/SortBar";
 import "./TaskDashBoard.css";
 
 export const TaskDashboard = () => {
   const [tasks, setTasks] = useState([]);
   const [categories, setCategories] = useState([]);
-  //   const [filters, setFilters] = useState({ completed: null, category: "" });
+  const [sortOption, setSortOption] = useState("deadline");
   const token = localStorage.getItem("token");
 
   const noTasks = tasks.length === 0;
@@ -42,6 +43,33 @@ export const TaskDashboard = () => {
     fetchCategories();
   }, []);
 
+  const sortTasks = (tasks, option) => {
+    switch (option) {
+      case "priority":
+        return [...tasks].sort((a, b) => {
+          const priorityOrder = { high: 1, medium: 2, low: 3 };
+          return priorityOrder[a.priority] - priorityOrder[b.priority];
+        });
+      case "alphabetical":
+        return [...tasks].sort((a, b) => {
+          if (a.title.toLowerCase() < b.title.toLowerCase()) return -1;
+          if (a.title.toLowerCase() > b.title.toLowerCase()) return 1;
+          return 0;
+        });
+      case "deadline":
+      default:
+        return [...tasks].sort(
+          (a, b) => new Date(a.due_date) - new Date(b.due_date)
+        );
+    }
+  };
+
+  const handleSortChange = (newSortOption) => {
+    if (newSortOption !== sortOption) {
+      setSortOption(newSortOption);
+    }
+  };
+
   const handleComplete = async (taskId, completed) => {
     try {
       await axios.put(
@@ -75,6 +103,7 @@ export const TaskDashboard = () => {
   return (
     <div className="task-list-page">
       <h2 id="task-dashboard-title">MY TASKS</h2>
+      <div className="sort-bar-wrapper"></div>
       {noTasks ? (
         <p id="no-tasks-message">Lucky you, there are no tasks!</p>
       ) : (
@@ -86,9 +115,14 @@ export const TaskDashboard = () => {
             <div className="task-card task-due-date">DEADLINE</div>
             <div className="task-card task-completed">COMPLETED</div>
             <div className="task-card task-category">CATEGORY</div>
-            <div className="task-card actions"></div>
+            <div className="task-card actions">
+              <SortBar
+                sortOption={sortOption}
+                onSortChange={handleSortChange}
+              />
+            </div>
           </div>
-          {tasks.map((task) => (
+          {sortTasks(tasks, sortOption).map((task) => (
             <TaskCard
               key={task.id}
               task={task}

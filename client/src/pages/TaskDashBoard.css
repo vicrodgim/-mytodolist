@@ -42,7 +42,7 @@
 
 .task-card-container.header {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 2fr;
   padding: 15px;
   background-color: #3d52a0;
   color: #ede8f5;

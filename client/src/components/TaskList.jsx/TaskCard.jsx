@@ -15,11 +15,11 @@ export const TaskCard = ({
 
   return (
     <div className="task-card-container">
-      <div
-        className="task-card task-title custom-tooltip"
-        title={task.description ? task.description : "No description"}
-      >
+      <div className="task-card task-title custom-tooltip">
         {task.title}
+        <span className="tooltip-text">
+          {task.description ? task.description : "No description"}
+        </span>
       </div>
       <div className="task-card task-priority">{task.priority}</div>
       <div className="task-card task-date">

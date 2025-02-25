@@ -1,6 +1,6 @@
 .task-card-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 2fr;
   padding: 15px;
   background-color: #ede8f5;
   border-radius: 10px;
@@ -30,12 +30,6 @@
   text-align: center;
   font-size: 1rem;
   padding: 5px;
-}
-
-.vl {
-  border-right: 1px solid violet;
-  margin: 0 20px;
-  height: 70%;
 }
 
 .task-card.task-priority {
@@ -92,18 +86,18 @@
 .tooltip-text {
   visibility: hidden;
   width: 200px;
-  background-color: #333;
+  background-color: violet;
   color: #fff;
   text-align: center;
   border-radius: 5px;
-  padding: 5px;
+  padding: 8px;
   position: absolute;
   z-index: 1;
   bottom: 125%; /* Position above the element */
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .custom-tooltip:hover .tooltip-text {
