@@ -15,8 +15,6 @@ import "./App.css";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
 
-  const Profile = () => <h2>Profile Page (Coming Soon)</h2>;
-
   useEffect(() => {
     const token = localStorage.getItem("token");
     setIsLoggedIn(!!token);
@@ -56,10 +54,6 @@ function App() {
         <Route
           path="/tasks"
           element={isLoggedIn ? <TaskDashboard /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/profile"
-          element={isLoggedIn ? <Profile /> : <Navigate to="/login" />}
         />
         <Route
           path="*"
